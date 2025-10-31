@@ -24,6 +24,6 @@ jobs:
 
     - name: Run Flask and show output
       run: |
-        python flask_addition.py &
+        python addition.py &
         sleep 5
         curl "http://127.0.0.1:5000/add?a=7&b=3"
