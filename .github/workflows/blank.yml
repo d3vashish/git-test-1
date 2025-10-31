@@ -35,3 +35,7 @@ jobs:
         
       - name: Run addition file
         run: python3 addition.py
+        
+      - name: Test API with curl
+        run: |
+          curl "http://127.0.0.1:5000/add?num1=5&num2=7"
