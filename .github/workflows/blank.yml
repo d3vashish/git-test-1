@@ -1,4 +1,5 @@
 name: Flask Addition CI
+
 on:
   push:
     branches: [ "main" ]
@@ -6,13 +7,23 @@ on:
     branches: [ "main" ]
 
 jobs:
-  test:
+  run-flask:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-      - run: |
-          pip install flask requests
-          python addition.py
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+
+    - name: Install dependencies
+      run: pip install flask
+
+    - name: Run Flask and show output
+      run: |
+        python flask_addition.py &
+        sleep 5
+        curl "http://127.0.0.1:5000/add?a=7&b=3"
