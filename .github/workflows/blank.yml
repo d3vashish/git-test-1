@@ -15,4 +15,4 @@ jobs:
           python-version: "3.10"
       - run: |
           pip install flask requests
-          python flask_addition_test.py
+          python addition.py
